@@ -1,0 +1,24 @@
+section.artistpage
+    .search
+        h1 Artist Directory
+        label search: 
+        input(ng-model='query', placeholder='Search for artists', autofocus='autofocus')
+        label.formgroup
+          | by:
+          select(ng-model='artistOrder')
+            option(value='name') Name
+            option(value='reknown') Reknown
+        label.formgroup
+          input(type='radio', ng-model='direction', name='direction', checked='checked')
+          | ascending
+        label.formgroup
+          input(type='radio', ng-model='direction', name='direction', value='reverse')
+          | descending
+        // (ng-show='query')
+      ul.artistlist
+        li.artist.cf(ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
+          a(href='#/details/{{artists.indexOf(item)}}')
+            img(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
+            .info
+              h2 {{item.name}}
+              h3 {{item.reknown}}

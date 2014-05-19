@@ -1,0 +1,8 @@
+section.artistinfo
+    .artist.cf(ng-model='artists')
+        h1 {{artists[whichItem].name}}
+        .info
+          h3 {{artists[whichItem].reknown}}
+          img(ng-src='images/{{artists[whichItem].shortname}}_tn.jpg', alt='Photo of {{artists[whichItem].name}}')
+          .bio {{artists[whichItem].bio}}
+      a(href='/') « Back to search
