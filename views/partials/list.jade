@@ -1,24 +1,40 @@
-section.artistpage
-    .search
+.container-fluid
+  .row
+    .col-xs-3
+    .col-xs-6
+      .jumbotron
         h1 Artist Directory
-        label search: 
-        input(ng-model='query', placeholder='Search for artists', autofocus='autofocus')
-        label.formgroup
-          | by:
-          select(ng-model='artistOrder')
-            option(value='name') Name
-            option(value='reknown') Reknown
-        label.formgroup
-          input(type='radio', ng-model='direction', name='direction', checked='checked')
-          | ascending
-        label.formgroup
-          input(type='radio', ng-model='direction', name='direction', value='reverse')
-          | descending
-        // (ng-show='query')
-      ul.artistlist
-        li.artist.cf(ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
-          a(href='#/details/{{artists.indexOf(item)}}')
-            img(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
-            .info
-              h2 {{item.name}}
-              h3 {{item.reknown}}
+        fieldset
+          .form-group
+            label.col-xs-2.control-label search:
+            .col-xs-10
+              input.form-control(ng-model='query', placeholder='Search for artists', autofocus='autofocus')
+          .form-group
+            label.col-xs-2 by:
+            .col-xs-2
+              select(ng-model='artistOrder')
+                option(value='name') Name
+                option(value='reknown') Reknown
+          .form-group
+            .col-xs-2
+              .radio-inline
+                label
+                  input(type='radio', ng-model='direction', name='direction', checked='checked')
+                  | ascending
+            .col-xs-3
+              .radio-inline
+                label
+                  input(type='radio', ng-model='direction', name='direction', value='reverse')
+                  | descending
+          // (ng-show='query')
+  .row
+    .col-xs-4
+    .col-xs-4
+      .list-group
+        a.list-group-item(href='#/details/{{artists.indexOf(item)}}', ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
+          .row
+            .col-xs-3
+              img.img-responsive.img-rounded(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
+            .col-xs-9
+              h4.list-grou-item-heading {{item.name}}
+              p.list-grou-item-text {{item.reknown}}
