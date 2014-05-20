@@ -4,19 +4,20 @@
     .col-xs-10
       .jumbotron
         h1.text-center Boater Directory
-        fieldset
+        form.form-horizontal
+          fieldset
             .form-group
-              label.col-xs-2.control-label search:
+              label.col-xs-2.control-label(for='searchQuery') search:
               .col-xs-10
-                input.form-control(ng-model='query', placeholder='Search for artists', autofocus='autofocus')
+                input.form-control(ng-model='query', placeholder='Search for artists', autofocus='autofocus', id='searchQuery')
             .form-group
-              label.col-xs-2 by:
+              label.col-xs-2.control-label(for='artistOrder') by:
               .col-xs-3
-                select(ng-model='artistOrder')
+                select(ng-model='artistOrder', id='artistOrder')
                   option(value='name') Name
                   option(value='reknown') Reknown
             .form-group
-              .col-xs-3
+              .col-xs-4
                 .radio-inline
                   label
                     input(type='radio', ng-model='direction', name='direction', checked='checked')
