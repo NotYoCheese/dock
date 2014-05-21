@@ -1,40 +1,31 @@
-.container-fluid
-  .row
-    .col-sm-1
-    .col-sm-10
-      .jumbotron
-        h1.text-center Boater Directory
-        form.form-horizontal
-          fieldset
-            .form-group
-              label.col-sm-2.control-label(for='searchQuery') search:
-              .col-sm-10
-                input.form-control(ng-model='query', placeholder='Search for artists', autofocus='autofocus', id='searchQuery')
-            .form-group
-              label.col-sm-2.control-label(for='artistOrder') by:
-              .col-sm-3
-                select(ng-model='artistOrder', id='artistOrder')
-                  option(value='name') Name
-                  option(value='reknown') Reknown
-            .form-group
-              .col-sm-4
-                .radio-inline
-                  label
-                    input(type='radio', ng-model='direction', name='direction', checked='checked')
-                    | ascending
-              .col-sm-4
-                .radio-inline
-                  label
-                    input(type='radio', ng-model='direction', name='direction', value='reverse')
-                    | descending
-  .row
-    .col-sm-3
-    .col-sm-6
-      .list-group
-        a.list-group-item(href='#/details/{{artists.indexOf(item)}}', ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
-          .row
-            .col-sm-4
-              img.img-responsive.img-rounded(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
-            .col-sm-8
-              h4.list-grou-item-heading {{item.name}}
-              p.list-grou-item-text {{item.reknown}}
+.row
+  h1.text-center Boater Directory
+  form.form-horizontal(role='form')
+      .form-group
+        label.col-sm-2.control-label(for='searchQuery') search:
+        .col-sm-10
+          input.form-control(ng-model='query', placeholder='Search for artists', autofocus='autofocus', id='searchQuery')
+      .form-group
+        label.col-sm-2.control-label(for='artistOrder') by:
+        .col-sm-10
+          select.form-control(ng-model='artistOrder', id='artistOrder')
+            option(value='name') Name
+            option(value='reknown') Reknown
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          .radio-inline
+            label
+              input(type='radio', ng-model='direction', name='direction', checked='checked')
+              | ascending
+          .radio-inline
+            label
+              input(type='radio', ng-model='direction', name='direction', value='reverse')
+              | descending
+.row
+  .col-sm-6.col-sm-offset-3
+    .list-group
+      a.list-group-item(href='#/details/{{artists.indexOf(item)}}', ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
+        .row
+            img.img-responsive.img-circle.pull-left(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
+            h4.list-grou-item-heading {{item.name}}
+            p.list-grou-item-text {{item.reknown}}

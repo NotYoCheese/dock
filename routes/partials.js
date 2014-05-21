@@ -20,7 +20,7 @@ partials.get('/:filename', function(req, res, next){
 	console.dir(req.params);
 	console.dir('filename: '+ req.params.filename);
 	console.log(path.join('partials', req.params.filename));
-	res.render(path.join('partials', req.params.filename));
+	res.render(path.join('partials', req.params.filename), { title: 'Express' });
 //	res.render('partials/list.jade');
 
 });
