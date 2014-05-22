@@ -1,31 +1,35 @@
 .row
-  h1.text-center Boater Directory
-  form.form-horizontal(role='form')
-      .form-group
-        label.col-sm-2.control-label(for='searchQuery') search:
-        .col-sm-10
-          input.form-control(ng-model='query', placeholder='Search for artists', autofocus='autofocus', id='searchQuery')
-      .form-group
-        label.col-sm-2.control-label(for='artistOrder') by:
-        .col-sm-10
-          select.form-control(ng-model='artistOrder', id='artistOrder')
-            option(value='name') Name
-            option(value='reknown') Reknown
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          .radio-inline
-            label
-              input(type='radio', ng-model='direction', name='direction', checked='checked')
-              | ascending
-          .radio-inline
-            label
-              input(type='radio', ng-model='direction', name='direction', value='reverse')
-              | descending
+  .col-sm-8.col-sm-offset-2
+    .panel.panel-primary
+      .panel-heading
+        h1.text-center Boater Directory
+      .panel-body
+        form.form-horizontal(role='form')
+          .form-group
+            label.col-sm-2.control-label(for='searchQuery') search:
+            .col-sm-10
+              input.form-control(ng-model='query', placeholder='Search for artists', autofocus='autofocus', id='searchQuery')
+          .form-group
+            label.col-sm-2.control-label(for='artistOrder') by:
+            .col-sm-10
+              select.form-control(ng-model='artistOrder', id='artistOrder')
+                option(value='name') Name
+                option(value='reknown') Reknown
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              .radio-inline
+                label
+                  input(type='radio', ng-model='direction', name='direction', checked='checked')
+                  | ascending
+              .radio-inline
+                label
+                  input(type='radio', ng-model='direction', name='direction', value='reverse')
+                  | descending
 .row
-  .col-sm-6.col-sm-offset-3
+  .col-sm-6.col-sm-offset-3.col-xs-10.col-xs-offset-1
     .list-group
-      a.list-group-item(href='#/details/{{artists.indexOf(item)}}', ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
+      a.list-group-item.boater.cf(href='#/details/{{artists.indexOf(item)}}', ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
         .row
-            img.img-responsive.img-circle.pull-left(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
-            h4.list-grou-item-heading {{item.name}}
-            p.list-grou-item-text {{item.reknown}}
+          img.img-responsive.img-circle.pull-left(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
+          h4.list-grou-item-heading {{item.name}}
+          p.list-grou-item-text {{item.reknown}}

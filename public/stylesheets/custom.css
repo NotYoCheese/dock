@@ -1,0 +1,25 @@
+/* custom css */
+
+cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.boater.ng-enter.ng-enter-active,
+.boater.ng-leave {
+    opacity: 1;
+    height: 80px;
+    overflow: hidden;
+}
+
+.boater.ng-leave.ng-leave-active,
+.boater.ng-enter {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
