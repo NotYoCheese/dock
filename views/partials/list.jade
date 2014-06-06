@@ -14,7 +14,7 @@
             .col-sm-10
               select.form-control(ng-model='artistOrder', id='artistOrder')
                 option(value='name') Name
-                option(value='reknown') Reknown
+                option(value='boatName') Boat Name
           .form-group
             .col-sm-offset-2.col-sm-10
               .radio-inline
@@ -30,6 +30,6 @@
     .list-group
       a.list-group-item.boater.cf(href='#/details/{{artists.indexOf(item)}}', ng-animate='\'animate\'', ng-repeat='item in artists | filter: query | orderBy: artistOrder:direction')
         .row
-          img.img-responsive.img-circle.pull-left(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.name}}')
+          img.img-responsive.img-circle.pull-left(ng-src='images/{{item.shortname}}_tn.jpg', alt='Photo of {{item.boatName}}')
           h4.list-grou-item-heading {{item.name}}
-          p.list-grou-item-text {{item.reknown}}
+          p.list-grou-item-text {{item.boatName}}
